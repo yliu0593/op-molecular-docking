@@ -1,0 +1,48 @@
+% \documentclass[9pt, aspectratio=169,compress,handout]{beamer} 
+\documentclass[9pt, aspectratio=169,compress]{beamer} 
+\usepackage{layout}
+%% theme
+% \usetheme{Szeged} 
+% \usecolortheme{dove}
+\usetheme{Singapore}
+\usepackage{amsmath} 
+\usepackage{subcaption}
+\usepackage{listings}
+% \usepackage{mathtools}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setbeamertemplate{blocks}[Shadow=true]
+% \usepackage{xcolor}
+% \definecolor{c_block_title}{RGB}{color-spec}
+% \definecolor{c_block_body}{model}{color-spec}
+\setbeamercolor{block title}{fg=black,bg=blue!20}
+\setbeamercolor{block body}{fg=black,bg=blue!5}
+% \setbeamercolor{background canvas}{bg=yellow}
+\usepackage{appendixnumberbeamer}
+\setbeamercovered{transparent} % for \pausing transparent effect
+\addtobeamertemplate{navigation symbols}{}{ 
+\hspace{1em}    
+\usebeamerfont{footline}%
+    \insertframenumber / \inserttotalframenumber }
+
+% \addtobeamertemplate{navigation symbols}{}{%
+%     \usebeamerfont{footline}%
+%     \usebeamercolor[fg]{footline}%
+%     \hspace{1em}%
+%      % \vspace{2em}%
+%     \insertframenumber/\inserttotalframenumber
+% }
+
+% appendixframe includes a hyperlink to the frame labeled ‘questions’.
+% The ‘\vskip’ commands are only included so that this button always
+% appears on the bottom of the frame.
+\newenvironment{appendixframe}[1]
+  {\begin{frame}[environment=appendixframe]\frametitle{#1}}
+  {\vskip0ptplus1filll%
+    \hyperlink{additional}{\beamerreturnbutton{return}}%
+    \vskip2ex\end{frame}}
+
+
+\setbeamerfont{footnote}{size=\tiny}
+% \usepackage[english]{babel} % ensure proper hyphen according to the language https://tex.stackexchange.com/questions/27740/whats-the-benefit-of-loading-babel-when-writing-in-english/27743#27743
+\usepackage{lmodern} % for the fonts https://tex.stackexchange.com/questions/147194/is-it-still-useful-to-load-the-lmodern-package
+\usepackage{siunitx}

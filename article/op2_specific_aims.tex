@@ -1,0 +1,32 @@
+% 1 page maximum
+% B. Specific Aims. Develop a proposal with at least one original aim (this aim may not
+% have previously appeared in any of the student’s PI’s proposals or been discussed
+% previously in some depth with the PI). 
+
+% In the Specific Aims section, one should state concisely the goals of the proposed research
+% and summarize the expected outcome(s), including the impact that the results of the
+% proposed research will exert on the research field(s) involved. 
+
+%List succinctly the specific
+% objectives of the research proposed, e.g., to test a stated hypothesis, create a novel design,
+% solve a specific problem, challenge an existing paradigm or clinical practice, address a
+% critical barrier to progress in the field, or develop new technology.
+\section{Specific aims}
+
+\paragraph{Aim \Romannum{1}: build a machine learned predictor for tuned docking parameters} 
+% The goal of this aim will be to build the architecture to assist virtual screening, i.e. the new `scoring function' will output more precise drug lead prediction than using a docking software without this architecture.
+In this aim, docking parameters will be generated and trained with SVM. 
+The generation of docking parameters rely on the CASF (Comparative Assessment of Scoring Functions) protocol that is newly published for the evaluation of scoring functions.
+A mini-batch gradient descent algorithm will be used to update the docking parameters until it passes a user-define threshold.
+At the end of this step, docking parameters specific to individual  ligand-receptor complex and the complex's molecular descriptor will be used to train a SVM so that, the SVM predictor can generate docking parameters based on an input molecular descriptor.
+
+\paragraph{Aim 2: Active selection of ligand to-be-docked in virtual screening}
+Instead of randomly going through the ligands to be tested in virtual screening,
+this proposals develops an active selection that involves SVM, in which all of the ligands in ligand library to be docked will be projected onto a feature space, with a hyperplane separating the so-far known active ligands and non-active ligands.
+As screening processes more ligand will be labeled and the hyperplane will be dynamically updated. 
+The key is to always use the ligand that's furtherest away from the hyperplane in the active ligands side.
+
+
+\paragraph{Aim 3: applicate the combined virtual docking architecture for Alzheimer’s disease related receptors} 
+This aim applicated the previously built architecture in the realistic scenario of searching inhibitor (binder) for proteins relevant to Alzheimer’s disease.
+% Simplify the architecture from a regression model to a classification problem and applicate it into a multi-targeted directed ligands virtual screening case.

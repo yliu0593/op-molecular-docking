@@ -1,0 +1,36 @@
+%one paragraph (15-25 lines) separate page
+% A. Project Summary. It is meant to serve as a succinct and accurate description of the
+% proposed work when separated from the application. State the application's broad, longterm objectives and specific aims, making reference to the health relatedness of the
+% project. Describe concisely the research design and methods for achieving the stated
+% goals. This section should be informative to other persons working in the same or related
+% fields and insofar as possible understandable to a scientifically or technically literate
+% reader.
+\section{Project Summary}
+
+This document proposes a machine learning architecture for structure based virtual screening in drug discovery. 
+In drug discovery, virtual screening is categorized into structure based and ligand based depending on the availability of structural data of the receptor.
+This proposal focuses on structure based virtual screening,
+and proposes a two step improvement that targets the docking step and the screening step in virtual screening 
+as aim \Romannum{1} and aim \Romannum{2} respectively. 
+Both of the improvement utilize a machine learning algorithm, specifically, support vector machine (SVM), 
+which is considered to be a robust and well-performing algorithm 
+for small datasets.
+Aim \Romannum{3} suggests the application of previously constructed architecture as aim \Romannum{1} and aim \Romannum{2} combined for the screening of Alzheimer's disease related targets. 
+
+
+% A frustration situation in todays \textit{in silico} screening 
+% is that
+% drug leads that are predicted to be active binder of the target protein 
+% fail to bind in real experimental conditions.
+% Generally it is summarized this is due to the limitations of the docking software,
+% more specifically, the scoring functions within the docking software.
+% Scoring functions have been under active development towards better estimation of binding affinity,
+% and much efforts have been put into building more realistic model in molecular dynamics level, 
+% or incorporating machine learning algorithms training towards better predicting scoring functions.
+% However, not much efforts are put into a complex-specific configuration per docking event.
+% This article uses the CASF scoring functions evaluation protocol 
+% to optimize the complex specific docking configuration
+% with simple machine learning design.
+% Despite intensive research over the years, classical scoring functions have reached a plateauin their predictive performance.
+%  These assume a predetermined additive functional form for some sophisticatednumerical features, and use standard multivariate linear regression (MLR) on experimental data to derive thecoefficients.
+% This proposal takes the popular docking software AutoDock Vina and train the output of which towards better performance in the CASF-2013 benchmark datasets.

@@ -1,0 +1,251 @@
+%% By Youlin Liu 2018-09-17 for op
+
+\documentclass[11pt]{article}
+\usepackage[scale=0.8]{geometry} %http://texdoc.net/texmf-dist/doc/latex/geometry/geometry.pdf [left=1.5cm,right=1.5cm,top=1.5cm,bottom=1.5cm]
+\usepackage{chngpage}
+\usepackage{indentfirst} 
+\usepackage{graphicx} % Required for including images
+\DeclareGraphicsExtensions{.eps,.pdf,.jpeg,.png}
+\usepackage[labelfont=bf]{caption}
+\usepackage{amsmath}                      % Use more than one optional parameter in a new commands
+\usepackage{xargs}
+\usepackage[square,numbers]{natbib} %use natbib instead of cite, \bibliographystyle{plainnat},to cite author use \citep
+% \bibliographystyle{nihunsrt}
+\usepackage{subcaption} % use subcaption instead of subfigure <- keeps giving me compling errors
+% \usepackage[colorlinks,linkcolor=black,anchorcolor=blue,citecolor=green]{hyperref}
+\usepackage[pdftex,colorlinks,linkcolor=black,citecolor=black,urlcolor=black,filecolor=black]{hyperref}
+% \usepackage{courier} %for inline code snippets,for \ttfamily in listing
+
+% \usepackage{fontspec}
+% \setmainfont{Georgia} 
+% \setsansfont{Trebuchet MS} 
+% \setmonofont{Inconsolata}
+\renewcommand{\familydefault}{\ttdefault}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% COLOR %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%defined colors: black, blue, brown, cyan, darkgray, gray, green, lightgray, lime, magenta, olive, orange, pink, purple, red, teal, violet, white, yellow.
+\usepackage[pdftex,dvipsnames]{xcolor}
+\definecolor{emph}{RGB}{255,87,51} % emphasizing text
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+\definecolor{inp_local_comments}{RGB}{42,0.0,255} % INP local comments
+\definecolor{inp_questions}{RGB}{186,19,178} % questions raised by user
+\definecolor{question}{RGB}{186,19,178} % questions raised by user
+\definecolor{inp_comments}{RGB}{43,140,75} % INP comments
+\definecolor{inp_other}{RGB}{127,0,85} 
+\definecolor{inp_key_entry}{RGB}{255,87,51} % INP important entried
+% \definecolor{inp_local_comments}{RGB}{42,0.0,255} % INP local comments
+% \definecolor{inp_questions}{RGB}{186,19,178} % questions raised by user
+% \definecolor{question}{RGB}{186,19,178} % questions raised by user
+% \definecolor{inp_comments}{RGB}{43,140,75} % INP comments
+% \definecolor{inp_other}{RGB}{127,0,85} 
+% \definecolor{matlab_additional_comments}{RGB}{255,87,51} % INP important entried
+%%%defined colors: black, blue, brown, cyan, darkgray, gray, green, lightgray, lime, magenta, olive, orange, pink, purple, red, teal, violet, white, yellow.
+%\textcolor{declared-color}{text}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% wrap figure %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{wrapfig}%
+% %usage
+% \begin{wrapfigure}{r}{0.48\textwidth}%{4.5cm}%靠文字内容的左侧
+% \includegraphics[width=0.445\textwidth]{figures/xds_flow.png}
+% \caption{Processing file exchange in XDS}
+% \label{fig:xds_flow}
+% \end{wrapfigure}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% FLOW CHARTS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \usepackage[latin1]{inputenc}
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows}
+% Define block styles
+% Define block styles
+\tikzstyle{decision} = [diamond, draw, fill=blue!20, 
+    text width=4.5em, text badly centered, node distance=3cm, inner sep=0pt]
+\tikzstyle{block} = [rectangle, draw, fill=blue!20, 
+    text width=5em, text centered, rounded corners, minimum height=4em]
+    \tikzstyle{block2} = [rectangle, draw, fill=red!20, 
+    text width=5em, text centered, rounded corners, minimum height=4em]
+     \tikzstyle{block3} = [rectangle, draw, fill=green!20, 
+    text width=5em, text centered, rounded corners, minimum height=4em]
+\tikzstyle{line} = [draw, -latex']
+\tikzstyle{cloud} = [draw, ellipse,fill=red!20, node distance=3cm,
+    minimum height=2em]
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  LISTING %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{listings}  
+\lstset{               
+  language=matlab,% choose the language of the code
+  numbers=left,                   % where to put the line-numbers
+  stepnumber=1,                   % the step between two line-numbers.        
+  numbersep=5pt,                  % how far the line-numbers are from the code
+  backgroundcolor=\color{white},  % choose the background color. You must add \usepackag
+  basicstyle=\small\ttfamily,        % size of fonts used for the code
+  breaklines=true,                 % automatic line breaking only at whitespace
+  captionpos=b,                    % sets the caption-position to bottom
+  commentstyle=\color{mygreen},    % comment style
+  escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
+  keywordstyle=\color{blue},       % keyword style
+  stringstyle=\color{mymauve},
+  showspaces=false,               % show spaces adding particular underscores
+  showstringspaces=false,         % underline spaces within strings
+  showtabs=false,                 % show tabs within strings adding particular underscores
+  tabsize=2,                      % sets default tabsize to 2 spaces
+  captionpos=b,                   % sets the caption-position to bottom
+  breaklines=true,                % sets automatic line breaking
+  title=\lstname,                 % show the filename of files included with \lstinputlisting;
+}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% TODO notes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% oringinally from http://tex.stackexchange.com/questions/9796/how-to-add-todo-notes
+\usepackage[colorinlistoftodos,prependcaption,textsize=small]{todonotes}
+\newcommandx{\rep}[2][1=]{\todo[linecolor=red,backgroundcolor=red!25,bordercolor=red,#1]{#2}}
+%\newcommandx{\change}[2][1=]{\todo[linecolor=blue,backgroundcolor=blue!25,bordercolor=blue,#1]{#2}}
+\newcommandx{\note}[2][1=]{\todo[linecolor=OliveGreen,backgroundcolor=OliveGreen!25,bordercolor=OliveGreen,#1]{#2}}
+\newcommandx{\info}[2][1=]{\todo[linecolor=Plum,backgroundcolor=Plum!25,bordercolor=Plum,#1]{#2}}
+\newcommandx{\hide}[2][1=]{\todo[disable,#1]{#2}}
+% \todo[inline]{The original todo note withouth changed colours.\newline Here's another line.}
+% \lipsum[11]\unsure{Is this correct?}\unsure{I'm unsure about also!}
+% \lipsum[11]\change{Change this!}
+% \lipsum[11]\info{This can help me in chapter seven!}
+% \lipsum[11]\improvement{This really needs to be improved!\newline\newline What was I thinking?!}
+% \lipsum[11]
+% \thiswillnotshow{This is hidden since option `disable' is chosen!}
+% \improvement[inline]{The following section needs to be rewritten!}
+
+
+
+%%%source http://tex.stackexchange.com/questions/22796/how-to-define-macro-for-colored-text
+% \newcommand\red[1]{{\color{red}#1}}
+% \newcommand\bft{\textbf}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%      numbering style
+% \renewcommand\thesection{\Roman{section}}
+% \renewcommand\thesubsection{\thesection.\roman{subsection}}
+% \arabic (1, 2, 3, ...)
+% \alph (a, b, c, ...)
+% \Alph (A, B, C, ...)
+% \roman (i, ii, iii, ...)
+% \Roman
+
+
+
+%%%%%%%%%%%%%%%%%%%       misc settings
+% below is copied from the NIH latex template
+\usepackage[scaled]{helvet} % Helvetica font for NIH
+\renewcommand*\familydefault{\sfdefault} % Use the sans serif version of the font
+\usepackage[T1]{fontenc}
+\linespread{1.05} % A little extra line spread is better for the Palatino font
+\usepackage{lipsum} % Used for inserting dummy 'Lorem ipsum' text into the template
+\usepackage{amsfonts, amsmath, amsthm, amssymb} % For math fonts, symbols and environments
+\hyphenation{ionto-pho-re-tic iso-tro-pic fortran} % Specifies custom hyphenation points for words or words that shouldn't be hyphenated at all
+% \setlength{\parindent}{0in}
+% \setlength{\parskip}{3mm}
+\graphicspath{../figures/}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%make glossaryes
+\usepackage[utf8]{inputenc}
+\usepackage{glossaries}
+
+\usepackage{siunitx}
+% \newglossaryentry{latex}
+% {
+%     name=latex,
+%     description={Is a mark up language specially suited 
+%     for scientific documents}
+% }
+% \clearpage
+% \printglossaries
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% listing for input docking file cause i just feel like it
+%%% 09-28-2018 decide not to do it: not worth it for figuring out wild cards
+% just \inputlstlsting with {}
+% \lstset{language=C,caption={Descriptive Caption Text},label=DescriptiveLabel}
+% Define Language
+% \lstdefinelanguage{plain_input}
+% {
+%   % list of keywords
+%   morekeywords={
+%   DETECTOR_DISTANCE,
+%     JOB,
+%     SPACE_GROUP_NUMBER,
+%     NAME_TEMPLATE_OF_DATA_FRAMES, 
+%     DATA_RANGE,
+%     SPOT_RANGE,
+%     INCLUDE_RESOLUTION_RANGE
+%   },
+%   sensitive=TRUE, % keywords are not case-sensitive
+%   morecomment=[l]{!}, % l is for line comment
+%   %morecomment=[s]{/*}{*/}, % s is for start and end delimiter
+%   %morestring=[b]" % defines that strings are enclosed in double quotes
+% }
+% % Set Language
+% \lstset{
+%   language={plain_input},
+%   basicstyle=\small\ttfamily, % Global Code Style
+%   captionpos=b, % Position of the Caption (t for top, b for bottom)
+%   extendedchars=true, % Allows 256 instead of 128 ASCII characters
+%   tabsize=2, % number of spaces indented when discovering a tab 
+%   columns=fixed, % make all characters equal width
+%   keepspaces=true, % does not ignore spaces to fit width, convert tabs to spaces
+%   showstringspaces=false, % lets spaces in strings appear as real spaces
+%   breaklines=true, % wrap lines if they don't fit
+%   frame=trbl, % draw a frame at the top, right, left and bottom of the listing
+%   frameround=tttt, % make the frame round at all four corners
+%   framesep=4pt, % quarter circle size of the round corners
+%   numbers=left, % show line numbers at the left
+%   numberstyle=\tiny\ttfamily, % style of the line numbers
+%   commentstyle=\color{inp_comments}, % style of comments
+%   keywordstyle=\color{inp_key_entry}, % style of keywords
+%   stringstyle=\color{inp_other}, % style of strings
+% }
+% \lstset{morecomment=[l][\color{inp_local_comments}]{!--}}
+% \lstset{morecomment=[l][\color{inp_questions}]{!++}}
+
+
+\usepackage{romannum}
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% CHEAT SHEET %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%input aligned multiple  figures%%%%%%%%%%%%%%%%%%%%%%
+	% \begin{figure}[htbp]
+	% 	\begin{minipage}{0.33\textwidth}
+	% 		\includegraphics[width=1.0\textwidth]{../images/ori.png}
+	% 		\centerline{Original image}
+	% 	\end{minipage}
+	% 	\begin{minipage}{0.33\textwidth}
+	% 		\includegraphics[width=1.0\textwidth]{../images/res400.png}
+	% 		\centerline{Restored image with $\gamma = 4$}
+	% 	\end{minipage}
+	% 	\begin{minipage}{0.33\textwidth}
+	% 		\begin{center}
+	% 			\includegraphics[width=1.0\textwidth]{../images/dif400.png}
+	% 			\centerline{Difference image with $\gamma = 4$}
+	% 		\end{center}
+	% 	\end{minipage}
+	% 	\caption{Original image, restored image and difference image with $\gamma = 4$}
+	% 	\label{3}
+	% \end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%input 1 figure%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \begin{figure}[htbp]
+% \centering
+% \includegraphics[width=\textwidth]{../images/AC.png}
+% 		\caption{Mean AC value across blocks}
+% 		\label{AC}
+% 	\end{figure}
